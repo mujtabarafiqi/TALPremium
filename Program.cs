@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using TALPremium.Repository.Abstract;
+using TALPremium.Repository.Concrete;
 using TALPremium.Repository.Context;
 namespace TALPremium
 {
@@ -8,8 +10,13 @@ namespace TALPremium
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Injection of database context
             builder.Services.AddDbContext<TALDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            
+
+            // DI for repositories for database access
+            builder.Services.AddScoped<IOccupationRepository, OccupationRepository>();
+
+
             // Add services to the container.
 
             builder.Services.AddControllersWithViews();
