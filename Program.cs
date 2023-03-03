@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using TALPremium.Repository.Context;
 namespace TALPremium
 {
     public class Program
@@ -6,6 +8,8 @@ namespace TALPremium
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<TALDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            
             // Add services to the container.
 
             builder.Services.AddControllersWithViews();
