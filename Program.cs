@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using TALPremium.Repository.Abstract;
 using TALPremium.Repository.Concrete;
 using TALPremium.Repository.Context;
+using TALPremium.Utils;
+
 namespace TALPremium
 {
     public class Program
@@ -9,7 +11,11 @@ namespace TALPremium
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Host.ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.AddConsole();
+            });
             // Injection of database context
             builder.Services.AddDbContext<TALDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -30,7 +36,7 @@ namespace TALPremium
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.ConfigureGlobalExceptionHandler(app.Services.GetRequiredService<ILogger<Program>>());
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
