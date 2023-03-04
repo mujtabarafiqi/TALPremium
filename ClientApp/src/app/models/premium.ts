@@ -1,5 +1,5 @@
 
 export interface Premium {
-  deathPremium: number;
-  tpdMonthlyPremium: number;
+  deathPremium?: number;
+  tpdMonthlyPremium?: number;
 }

@@ -1,32 +1,131 @@
 <form #memberForm="ngForm">
-  <div class="form-group">
-    <label for="name">
-      Name <span class="text-danger">*</span>
-    </label>
-    <input type="text" class="form-control {{(name.invalid)&& (name.dirty || name.touched || memberForm.submitted) ? 'input-error-border' : ''}}" id="name" required pattern="^\s*[\w]+[\s\w\W]*$"
-           [(ngModel)]="member.name" name="name" #name="ngModel">
-    <div *ngIf="name.invalid && (name.dirty || name.touched  || memberForm.submitted)" class="validation-error">
-      <div *ngIf="name.errors?.['required']">
-        Name is required.
-      </div>
-      <div *ngIf="name.errors?.['pattern']">
-        Special characters not allowed at the beginning.
-      </div>
-    </div>
-  </div>
-  <div class="form-group ">
-    <label>
-      Occupation <span class="text-danger">*</span>
-    </label>
-    <select class="form-control {{occupation.invalid && (occupation.dirty || occupation.touched || memberForm.submitted) ? 'input-error-border': ''}}" required name="occupationId"
-            [(ngModel)]="member.occupationId" #occupation="ngModel">
-      <option [ngValue]="undefined" disabled>--Select Occupation--</option>
-      <option *ngFor="let occupation of occupations" [ngValue]="occupation.id"> {{occupation.name}}</option>
-    </select>
-    <div *ngIf="occupation.invalid && (occupation.dirty || occupation.touched || memberForm.submitted)" class="validation-error">
-      <div *ngIf="occupation.errors?.['required']">
-        Occupation is required.
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="name">
+          Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control {{(name.invalid)&& (name.dirty || name.touched || memberForm.submitted) ? 'input-error-border' : ''}}" id="name" required pattern="^\s*[\w]+[\s\w\W]*$"
+               [(ngModel)]="member.name" name="name" #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched  || memberForm.submitted)" class="validation-error">
+          <div *ngIf="name.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors?.['pattern']">
+            Special characters not allowed at the beginning.
+          </div>
+        </div>
       </div>
     </div>
+    <div class="col-3"></div>
   </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <div class="form-group">
+        <label for="name">
+          Date of Birth <span class="text-danger">*</span>
+        </label>
+        <input type="date" class="form-control {{(dob.invalid)&& (dob.dirty || dob.touched || memberForm.submitted) ? 'input-error-border' : ''}}"
+               id="dob" required
+               min="{{minDob}}"
+               (change)="calculateAge()"
+               [(ngModel)]="member.dateOfBirth" name="dob" #dob="ngModel">
+        <div *ngIf="dob.invalid && (dob.dirty || dob.touched  || memberForm.submitted)" class="validation-error">
+          <div *ngIf="dob.errors?.['required']">
+            Date of Birth is required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+
+        <label for="name">
+          Age <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control {{(age.invalid)&& (age.dirty || age.touched || memberForm.submitted) ? 'input-error-border' : ''}}" id="age" readonly
+               [(ngModel)]="member.age" name="age" #age="ngModel">
+        <div *ngIf="age.invalid && (age.dirty || age.touched  || memberForm.submitted)" class="validation-error">
+          <div *ngIf="age.errors?.['required']">
+            Age is required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+
+    <div class="col-3">
+
+
+      <div class="form-group">
+        <label for="name">
+          Sum Insured <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control {{(sumInsured.invalid)&& (sumInsured.dirty || sumInsured.touched || memberForm.submitted) ? 'input-error-border' : ''}}"
+               id="sumInsured" required
+               pattern="^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$"
+               [(ngModel)]="member.sumInsured" name="sumInsured" #sumInsured="ngModel">
+        <div *ngIf="sumInsured.invalid && (sumInsured.dirty || sumInsured.touched  || memberForm.submitted)" class="validation-error">
+          <div *ngIf="sumInsured.errors?.['required']">
+            Sum Insured is required.
+          </div>
+          <div *ngIf="sumInsured.errors?.['pattern']">
+            Sum Insured must be valid number.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label>
+          Occupation <span class="text-danger">*</span>
+        </label>
+        <select class="form-control {{occupation.invalid && (occupation.dirty || occupation.touched || memberForm.submitted) ? 'input-error-border': ''}}" required name="occupationId"
+                [(ngModel)]="member.occupationId" #occupation="ngModel" (change)="calculatePremium()">
+          <option [ngValue]="undefined" disabled>--Select Occupation--</option>
+          <option *ngFor="let occupation of occupations" [ngValue]="occupation.id"> {{occupation.name}}</option>
+        </select>
+        <div *ngIf="occupation.invalid && (occupation.dirty || occupation.touched || memberForm.submitted)" class="validation-error">
+          <div *ngIf="occupation.errors?.['required']">
+            Occupation is required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <br *ngIf="!errorMessage" />
+  <div class="row" *ngIf="errorMessage">
+    <div class="col-3"></div>
+    <div class="col-6 text-center">
+      <h6 class="validation-error">{{errorMessage}}</h6>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row" *ngIf="premium.deathPremium && premium.tpdMonthlyPremium">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <strong>Death Premium:</strong>
+      {{premium.deathPremium| number : '1.2-2'}}
+    </div>
+    <div class="col-3">
+      <strong>TPD Premium Monthly:</strong>
+      {{premium.tpdMonthlyPremium| number : '1.2-2'}}
+    </div>  
+    <div class="col-3"></div>
+  </div>
+  <!--<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 text-center">
+      <button type="submit" class="btn btn-primary" (click)="calculatePremium()">Calculate</button>
+    </div>
+    <div class="col-3"></div>
+  </div>-->
 </form>
