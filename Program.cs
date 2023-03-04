@@ -15,6 +15,7 @@ namespace TALPremium
 
             // DI for repositories for database access
             builder.Services.AddScoped<IOccupationRepository, OccupationRepository>();
+            builder.Services.AddScoped<IMemberRepository, MemberRepository>();
 
 
             // Add services to the container.
