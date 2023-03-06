@@ -22,7 +22,7 @@ namespace TAL.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("TALPremium.Models.Member", b =>
+            modelBuilder.Entity("TAL.Data.Models.Member", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace TAL.Data.Migrations
                     b.ToTable("Members");
                 });
 
-            modelBuilder.Entity("TALPremium.Models.Occupation", b =>
+            modelBuilder.Entity("TAL.Data.Models.Occupation", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -101,7 +101,7 @@ namespace TAL.Data.Migrations
                     b.ToTable("Occupations");
                 });
 
-            modelBuilder.Entity("TALPremium.Models.Rating", b =>
+            modelBuilder.Entity("TAL.Data.Models.Rating", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,9 +134,9 @@ namespace TAL.Data.Migrations
                     b.ToTable("Ratings");
                 });
 
-            modelBuilder.Entity("TALPremium.Models.Member", b =>
+            modelBuilder.Entity("TAL.Data.Models.Member", b =>
                 {
-                    b.HasOne("TALPremium.Models.Occupation", "Occupation")
+                    b.HasOne("TAL.Data.Models.Occupation", "Occupation")
                         .WithMany("Members")
                         .HasForeignKey("OccupationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -145,9 +145,9 @@ namespace TAL.Data.Migrations
                     b.Navigation("Occupation");
                 });
 
-            modelBuilder.Entity("TALPremium.Models.Occupation", b =>
+            modelBuilder.Entity("TAL.Data.Models.Occupation", b =>
                 {
-                    b.HasOne("TALPremium.Models.Rating", "Rating")
+                    b.HasOne("TAL.Data.Models.Rating", "Rating")
                         .WithMany("Occupations")
                         .HasForeignKey("RatingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -156,12 +156,12 @@ namespace TAL.Data.Migrations
                     b.Navigation("Rating");
                 });
 
-            modelBuilder.Entity("TALPremium.Models.Occupation", b =>
+            modelBuilder.Entity("TAL.Data.Models.Occupation", b =>
                 {
                     b.Navigation("Members");
                 });
 
-            modelBuilder.Entity("TALPremium.Models.Rating", b =>
+            modelBuilder.Entity("TAL.Data.Models.Rating", b =>
                 {
                     b.Navigation("Occupations");
                 });
