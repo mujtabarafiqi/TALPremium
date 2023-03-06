@@ -1,4 +1,5 @@
-﻿using TAL.Data.Models;
+﻿using TAL.Data.Enums;
+using TAL.Data.Models;
 
 namespace TAL.Data.Repository.Context
 {
@@ -14,13 +15,13 @@ namespace TAL.Data.Repository.Context
                 var ratings = new List<Rating>() {
                     new Rating()
                     {
-                        Name = "Professional",
-                        Factor = 1,
+                        Name = RatingNames.Professional,
+                        Factor = RatingFactors.Professional,
                         Occupations = new List<Occupation>()
                         {
                             new Occupation()
                             {
-                                Name = "Doctor",
+                                Name = OccupationNames.Doctor,
                                 CreatedOn = createdDate
                             }
                         },
@@ -28,13 +29,13 @@ namespace TAL.Data.Repository.Context
                     },
                     new Rating()
                     {
-                        Name = "White Collar",
-                        Factor = (decimal)1.25,
+                        Name = RatingNames.WhiteCollar,
+                        Factor = RatingFactors.WhiteCollar,
                         Occupations = new List<Occupation>()
                         {
                             new Occupation()
                             {
-                                Name = "Author",
+                                Name = OccupationNames.Author,
                                 CreatedOn = createdDate
                             }
                         },
@@ -42,18 +43,18 @@ namespace TAL.Data.Repository.Context
                     },
                     new Rating()
                     {
-                        Name = "Light Manual",
-                        Factor = (decimal)1.5,
+                        Name = RatingNames.LightManual,
+                        Factor = RatingFactors.LightManual,
                         Occupations = new List<Occupation>()
                         {
                             new Occupation()
                             {
-                                Name = "Cleaner",
+                                Name = OccupationNames.Cleaner,
                                 CreatedOn = createdDate
                             },
                             new Occupation()
                             {
-                                Name = "Florist",
+                                Name = OccupationNames.Florist,
                                 CreatedOn = createdDate
                             }
                         },
@@ -61,18 +62,18 @@ namespace TAL.Data.Repository.Context
                     },
                     new Rating()
                     {
-                        Name = "Heavy Manual",
-                        Factor = (decimal)1.5,
+                        Name = RatingNames.HeavyManual,
+                        Factor = RatingFactors.HeavyManual,
                         Occupations = new List<Occupation>()
                         {
                             new Occupation()
                             {
-                                Name = "Farmer",
+                                Name = OccupationNames.Farmer,
                                 CreatedOn = createdDate
                             },
                             new Occupation()
                             {
-                                Name = "Mechanic",
+                                Name = OccupationNames.Mechanic,
                                 CreatedOn = createdDate
                             }
                         },
