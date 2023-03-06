@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TALPremium.Repository.Context;
+using TAL.Data.Repository.Context;
 
 #nullable disable
 
-namespace TALPremium.Migrations
+namespace TAL.Data.Migrations
 {
     [DbContext(typeof(TALDbContext))]
     [Migration("20230304073751_InitialSetup")]

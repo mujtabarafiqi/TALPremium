@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TALPremium.DTO;
-using TALPremium.Repository.Abstract;
-using TALPremium.Repository.Context;
+using TAL.Data.DTO;
+using TAL.Data.Repository.Abstract;
+using TAL.Data.Repository.Context;
 
-namespace TALPremium.Repository.Concrete
+namespace TAL.Data.Repository.Concrete
 {
     public class MemberRepository : IMemberRepository
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TALPremium.Models
+namespace TAL.Data.Models
 {
     public class Occupation : BaseEntity
     {

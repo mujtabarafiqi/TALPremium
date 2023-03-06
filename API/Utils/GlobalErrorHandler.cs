@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
 
-namespace TALPremium.Utils
+namespace TAL.API.Utils
 {
     public static class GlobalErrorHandler
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TALPremium.Repository.Abstract;
+using TAL.Data.Repository.Abstract;
 
-namespace TALPremium.Controllers
+namespace TAL.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

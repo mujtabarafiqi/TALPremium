@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using TALPremium.Repository.Abstract;
-using TALPremium.Repository.Concrete;
-using TALPremium.Repository.Context;
-using TALPremium.Utils;
+using TAL.Data.Repository.Abstract;
+using TAL.Data.Repository.Concrete;
+using TAL.Data.Repository.Context;
+using TAL.API.Utils;
 
-namespace TALPremium
+namespace TAL.API
 {
     public class Program
     {

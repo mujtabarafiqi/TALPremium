@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TALPremium.Migrations
+namespace TAL.Data.Migrations
 {
     public partial class InitialSetup : Migration
     {

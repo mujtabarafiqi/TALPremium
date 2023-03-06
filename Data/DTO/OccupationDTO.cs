@@ -1,4 +1,4 @@
-﻿namespace TALPremium.DTO
+﻿namespace TAL.Data.DTO
 {
     public class OccupationDTO
     {

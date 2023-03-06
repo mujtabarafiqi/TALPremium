@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TALPremium.Models;
+using TAL.Data.Models;
 
-namespace TALPremium.Repository.Context
+namespace TAL.Data.Repository.Context
 {
     public class TALDbContext : DbContext
     {

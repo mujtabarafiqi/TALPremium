@@ -1,6 +1,6 @@
-﻿using TALPremium.DTO;
+﻿using TAL.Data.DTO;
 
-namespace TALPremium.Repository.Abstract
+namespace TAL.Data.Repository.Abstract
 {
     public interface IOccupationRepository
     {

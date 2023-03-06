@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TALPremium.Controllers
+namespace TAL.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

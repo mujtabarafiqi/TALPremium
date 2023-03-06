@@ -1,4 +1,4 @@
-namespace TALPremium
+namespace TAL.API
 {
     public class WeatherForecast
     {

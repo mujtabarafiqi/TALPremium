@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TALPremium.Repository.Context;
+using TAL.Data.Repository.Context;
 
 #nullable disable
 
-namespace TALPremium.Migrations
+namespace TAL.Data.Migrations
 {
     [DbContext(typeof(TALDbContext))]
     partial class TALDbContextModelSnapshot : ModelSnapshot
