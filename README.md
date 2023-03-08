@@ -4,7 +4,7 @@ Test project for permium calculator using dotnet core and angular
 ## Tech Stack
 - Dotnet core 6
 - Angular 14
-- MSsqllocaldb
+- In-memory database
 
 ## Description
 - The application takes Name, Date of Birth, Sum Insured and Occupation using template driven angular form to calculate premium. 
