@@ -46,6 +46,7 @@ Test project for permium calculator using dotnet core and angular
 
 ## How to run?
    - Run directly in visual studio or run the command from cmd and access http://localhost:5021
+
         `dotnet run --project API/TAL.API.csproj` 
 
 
