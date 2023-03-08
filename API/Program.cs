@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using TAL.API.Utils;
 using TAL.Data.Repository.Abstract;
 using TAL.Data.Repository.Concrete;
 using TAL.Data.Repository.Context;
-using TAL.API.Utils;
 
 namespace TAL.API
 {
@@ -17,7 +17,8 @@ namespace TAL.API
                 logging.AddConsole();
             });
             // Injection of database context
-            builder.Services.AddDbContext<TALDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<TALDbContext>(opt => opt.UseInMemoryDatabase("TALDB"));
+            //builder.Services.AddDbContext<TALDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // DI for repositories for database access
             builder.Services.AddScoped<IOccupationRepository, OccupationRepository>();
