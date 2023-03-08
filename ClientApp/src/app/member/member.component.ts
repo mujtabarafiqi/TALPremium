@@ -78,6 +78,7 @@ export class MemberComponent implements OnInit {
       this.errorMessage = "Age must be 70 years max.";
       return;
     }
+    this.errorMessage = 'Please wait...';
     const mem: MemberPremiumInput = {
       age: this.member.age,
       occupationId: this.member.occupationId,
@@ -86,9 +87,9 @@ export class MemberComponent implements OnInit {
     this.memberService.calculatePremium(mem).pipe(takeUntil(this.ngUnsubscribe)).subscribe({
       next: result => {
         this.premium = result;
+        this.errorMessage = '';
       },
       error: error => {
-        debugger;
         console.error(error);
         this.errorMessage = error?.message || 'Sorry, something went wrong!';
       }
